@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 @RestController
 @RequestMapping("/api/admin/knowledge")
@@ -45,12 +46,13 @@ public class KnowledgeController {
     @PostMapping(value = "/file", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Mono<KnowledgeIngestResponse> ingestFile(@RequestPart("file") FilePart file) {
         // WebFlux 的 FilePart 是流式数据，这里合并成 byte[] 后交给文件解析服务。
+        // 文件解析、PDF 抽取、JPA 落库与 Chroma 镜像都是阻塞操作，切到 boundedElastic 线程池执行。
         return DataBufferUtils.join(file.content())
-                .map(dataBuffer -> {
+                .flatMap(dataBuffer -> Mono.fromCallable(() -> {
                     byte[] bytes = readBytes(dataBuffer);
                     int chunks = knowledgeFileService.ingest(file.filename(), bytes);
                     return new KnowledgeIngestResponse(file.filename(), chunks);
-                });
+                }).subscribeOn(Schedulers.boundedElastic()));
     }
 
     private byte[] readBytes(DataBuffer dataBuffer) {
