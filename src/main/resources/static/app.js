@@ -148,7 +148,7 @@ function showEmpty() {
     empty.className = "empty";
     empty.innerHTML = `
       <div class="empty-visual">
-        <img src="/assets/opspilot-campus-companion.png" alt="">
+        <img src="/assets/opspilot-ops-hero.jpg" alt="OpsPilot 运维助手">
       </div>
       <div class="empty-copy">
         <p class="eyebrow">OpsPilot Console</p>
