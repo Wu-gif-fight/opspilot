@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpsPilot</title>
+  <link rel="stylesheet" href="/styles.css?v=20260612-run-trace">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <main class="shell">
+    <section class="workspace">
+      <aside class="side">
+        <div class="brand-card">
+          <div class="brand-main">
+            <div class="mark">OP</div>
+            <div>
+              <p class="eyebrow">E-commerce Ops Copilot</p>
+              <h1>OpsPilot</h1>
+            </div>
+          </div>
+          <div class="status-stack">
+            <p id="serviceState" class="status-pill">连接中</p>
+            <p id="modelState" class="status-pill">模型模式：读取中</p>
+          </div>
+        </div>
+
+        <form id="loginForm" class="panel">
+          <div class="panel-title">
+            <div>
+              <h2>访问账号</h2>
+              <p id="loginState" class="state">engineer / engineer123</p>
+            </div>
+          </div>
+          <label class="field">
+            <span>账号</span>
+            <input id="username" name="username" value="engineer" autocomplete="username">
+          </label>
+          <label class="field">
+            <span>密码</span>
+            <input id="password" name="password" value="engineer123" type="password" autocomplete="current-password">
+          </label>
+          <button type="submit" class="primary-action">登录</button>
+        </form>
+
+        <section id="accountPanel" class="panel account-panel" hidden>
+          <div>
+            <p class="eyebrow">当前账号</p>
+            <h2 id="activeAccount">已登录</h2>
+            <p id="activeRole" class="state">在线</p>
+          </div>
+          <button id="switchAccount" type="button" class="ghost">切换账号</button>
+        </section>
+
+        <section id="userCompanionPanel" class="panel companion-panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Ops Modes</p>
+              <h2>运维助手快捷入口</h2>
+            </div>
+          </div>
+          <div class="mode-list">
+            <button type="button" class="mode-item prompt-chip" data-prompt="线上服务延迟突然升高，帮我梳理排查步骤。">
+              <span class="mode-icon">✦</span>
+              <span>
+                <strong>故障排查</strong>
+                <small>延迟、报错、慢查询</small>
+              </span>
+            </button>
+            <button type="button" class="mode-item prompt-chip" data-prompt="新版本发布后出问题了，怎么快速回滚？">
+              <span class="mode-icon">◐</span>
+              <span>
+                <strong>发布与回滚</strong>
+                <small>部署、灰度、版本回退</small>
+              </span>
+            </button>
+            <button type="button" class="mode-item prompt-chip" data-prompt="帮我解释一下监控告警的 P0/P1/P2 是怎么划分的。">
+              <span class="mode-icon">⌁</span>
+              <span>
+                <strong>监控告警</strong>
+                <small>指标、阈值、OnCall</small>
+              </span>
+            </button>
+          </div>
+          <p class="care-note">生产事故信号会进入告警升级流程，普通聊天不会展示分级标签。</p>
+        </section>
+
+        <section id="userMemoryPanel" class="panel memory-panel" hidden>
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Profile Memory</p>
+              <h2>记忆画像</h2>
+              <p id="userMemoryState" class="state">暂无画像</p>
+            </div>
+            <button id="refreshMemory" type="button" class="ghost">刷新</button>
+          </div>
+          <div id="userMemoryList" class="memory-list"></div>
+        </section>
+
+        <section id="adminSidePanel" class="panel admin-side-panel" hidden>
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Admin Radar</p>
+              <h2>后台巡检</h2>
+              <p class="state">关注高风险、邮件失败和知识库更新。</p>
+            </div>
+          </div>
+          <div class="admin-radar">
+            <div class="radar-row">
+              <span>高风险优先级</span>
+              <strong id="sideHighRisk">--</strong>
+            </div>
+            <div class="radar-row">
+              <span>邮件失败</span>
+              <strong id="sideMailFailed">--</strong>
+            </div>
+            <div class="radar-row">
+              <span>报告总数</span>
+              <strong id="sideReports">--</strong>
+            </div>
+          </div>
+          <div class="admin-action-stack">
+            <button id="sideRefresh" type="button" class="ghost" data-admin-refresh>刷新后台</button>
+            <button type="button" class="ghost" data-scroll-target="knowledgeUploadForm">上传知识</button>
+          </div>
+          <p class="care-note">管理端只显示汇总与记录，不提供用户聊天入口。</p>
+        </section>
+
+        <section class="panel reports-panel" hidden>
+          <div class="panel-head">
+            <div>
+              <h2 id="reportsTitle">后台记录</h2>
+              <p id="reportsCaption" class="state">仅管理员可见</p>
+            </div>
+            <button id="refreshReports" type="button" class="ghost">刷新</button>
+          </div>
+          <div id="reports" class="reports"></div>
+        </section>
+      </aside>
+
+      <section id="mainPanel" class="chat">
+        <header id="chatHead" class="chat-head">
+          <div class="chat-title">
+            <p class="eyebrow">OpsPilot Console</p>
+            <h2>智能对话</h2>
+            <p id="profileText">未登录</p>
+          </div>
+          <div class="chat-actions">
+            <button id="newSessionButton" type="button" class="ghost">新对话</button>
+            <div class="session-meter">
+              <span>会话状态</span>
+              <div id="sessionBadge" class="badge">READY</div>
+            </div>
+          </div>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <section id="adminDashboard" class="admin-dashboard" hidden>
+          <header class="admin-dashboard-head">
+            <div>
+              <p class="eyebrow">Admin Console</p>
+              <h2>管理后台</h2>
+              <p class="state">查看用户对话记录、Excel 写入数据和高级别告警通知。</p>
+            </div>
+            <button id="adminRefresh" type="button" class="ghost" data-admin-refresh>刷新数据</button>
+          </header>
+
+          <div id="adminStats" class="admin-stats"></div>
+
+          <section class="admin-tools">
+            <form id="knowledgeUploadForm" class="knowledge-upload">
+              <div>
+                <h3>知识库上传</h3>
+                <p id="knowledgeUploadState" class="state">支持 PDF、Markdown、txt 文件</p>
+              </div>
+              <label class="file-picker">
+                <input id="knowledgeFile" type="file" accept=".pdf,.md,.markdown,.txt,application/pdf,text/markdown,text/plain">
+                <span>选择文件</span>
+              </label>
+              <button type="submit" class="ghost">上传</button>
+            </form>
+          </section>
+
+          <section id="adminCharts" class="admin-visuals" aria-label="统计图表"></section>
+
+          <div class="admin-sections">
+            <section class="admin-section">
+              <div class="admin-section-head">
+                <h3>对话记录</h3>
+                <p class="state">点击任一记录查看完整对话</p>
+              </div>
+              <div id="adminReportRows" class="admin-table"></div>
+            </section>
+
+            <section class="admin-section">
+              <div class="admin-section-head">
+                <h3>Excel 写入数据</h3>
+                <p class="state">点击记录查看写入字段详情</p>
+              </div>
+              <div id="excelRows" class="admin-table"></div>
+            </section>
+
+            <section class="admin-section">
+              <div class="admin-section-head">
+                <h3>邮件发送记录</h3>
+                <p class="state">点击记录查看发送详情</p>
+              </div>
+              <div id="emailRows" class="admin-table"></div>
+            </section>
+
+            <section class="admin-section">
+              <div class="admin-section-head">
+                <h3>运行轨迹</h3>
+                <p class="state">点击记录查看 Agent 步骤</p>
+              </div>
+              <div id="traceRows" class="admin-table"></div>
+            </section>
+          </div>
+        </section>
+
+        <form id="chatForm" class="composer">
+          <div class="composer-main">
+            <div class="prompt-row" aria-label="快捷问题">
+              <button type="button" class="prompt-chip" data-prompt="帮我梳理一下线上延迟升高的排查步骤">排查延迟</button>
+              <button type="button" class="prompt-chip" data-prompt="解释一下限流和熔断的区别">限流熔断</button>
+              <button type="button" class="prompt-chip" data-prompt="数据库慢查询要怎么治理？">慢查询治理</button>
+            </div>
+            <textarea id="messageInput" rows="3" placeholder="输入你的问题或故障描述"></textarea>
+          </div>
+          <button id="sendButton" type="submit" class="send-action">发送</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <section id="conversationOverlay" class="conversation-overlay" hidden>
+    <div class="conversation-panel" role="dialog" aria-modal="true" aria-labelledby="conversationTitle">
+      <header class="conversation-head">
+        <div>
+          <p id="conversationKicker" class="eyebrow">完整对话</p>
+          <h2 id="conversationTitle">对话记录</h2>
+          <p id="conversationMeta" class="state"></p>
+        </div>
+        <button id="closeConversation" type="button" class="ghost">关闭</button>
+      </header>
+      <div id="conversationMessages" class="conversation-messages"></div>
+    </div>
+  </section>
+
+  <script src="/app.js?v=20260612-run-trace"></script>
+</body>
+</html>

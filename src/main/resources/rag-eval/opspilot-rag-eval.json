@@ -1,0 +1,3084 @@
+[
+  {
+    "id": "case-1",
+    "question": "新版本发布后线上出错怎么快速回滚",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "回滚",
+      "rollout undo"
+    ],
+    "referenceAnswer": "执行 kubectl rollout undo 回滚到上一个稳定版本。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "回滚",
+      "rollout undo"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "回滚"
+    ],
+    "requiredHelpTerms": [
+      "回滚"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-2",
+    "question": "发布流程的灰度比例一般怎么控制",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "灰度",
+      "发布"
+    ],
+    "referenceAnswer": "首次灰度建议 5%，稳定后逐步放量到 100%。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "灰度",
+      "发布"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "灰度"
+    ],
+    "requiredHelpTerms": [
+      "灰度"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-3",
+    "question": "数据库变更为什么要向前兼容",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "向前兼容",
+      "数据库"
+    ],
+    "referenceAnswer": "先加列后删列，避免直接修改列类型。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "向前兼容",
+      "数据库"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "向前兼容"
+    ],
+    "requiredHelpTerms": [
+      "向前兼容"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-4",
+    "question": "配置变更推生产前要注意什么",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "配置",
+      "预发"
+    ],
+    "referenceAnswer": "配置变更需在预发验证后才推生产，并保留审计记录。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "配置",
+      "预发"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "配置"
+    ],
+    "requiredHelpTerms": [
+      "配置"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-5",
+    "question": "镜像构建失败一般查什么",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "镜像",
+      "构建"
+    ],
+    "referenceAnswer": "优先检查依赖版本和构建缓存。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "镜像",
+      "构建"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "镜像"
+    ],
+    "requiredHelpTerms": [
+      "镜像"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-6",
+    "question": "容器启动即退出怎么排查",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "容器",
+      "启动"
+    ],
+    "referenceAnswer": "查看容器日志，确认配置缺失或端口占用。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "容器",
+      "启动"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "容器"
+    ],
+    "requiredHelpTerms": [
+      "容器"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-7",
+    "question": "敏感配置应该怎么管理",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "密钥",
+      "配置中心"
+    ],
+    "referenceAnswer": "敏感配置走密钥管理服务，不写入镜像或代码仓库。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "密钥",
+      "配置中心"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "密钥"
+    ],
+    "requiredHelpTerms": [
+      "密钥"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-8",
+    "question": "发布后延迟异常应该先做什么",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "回滚",
+      "延迟"
+    ],
+    "referenceAnswer": "立即回滚到上一个稳定版本，同时观察错误率和延迟。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "回滚",
+      "延迟"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "回滚"
+    ],
+    "requiredHelpTerms": [
+      "回滚"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-9",
+    "question": "什么是滚动更新",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "滚动更新",
+      "副本"
+    ],
+    "referenceAnswer": "每次只更新一个副本，观察 3 分钟再继续。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "滚动更新",
+      "副本"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "滚动更新"
+    ],
+    "requiredHelpTerms": [
+      "滚动更新"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-10",
+    "question": "今天天气怎么样",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "天气"
+    ],
+    "referenceAnswer": "今天天气晴，适合出行。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "天气"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "天气"
+    ],
+    "requiredHelpTerms": [
+      "天气"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-11",
+    "question": "生产发布失败了怎么办",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "回滚",
+      "生产事故"
+    ],
+    "referenceAnswer": "立即回滚到稳定版本，通知值班负责人，记录时间线。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "回滚",
+      "生产事故"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "回滚"
+    ],
+    "requiredHelpTerms": [
+      "回滚"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-12",
+    "question": "帮我介绍一下 OpsPilot 平台",
+    "expectedSources": [
+      "deployment-guide.md"
+    ],
+    "expectedTerms": [
+      "OpsPilot"
+    ],
+    "referenceAnswer": "OpsPilot 是面向电商平台的运维智能助手。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "OpsPilot"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "OpsPilot"
+    ],
+    "requiredHelpTerms": [
+      "OpsPilot"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-13",
+    "question": "服务延迟突然升高怎么排查",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "调用链",
+      "慢查询"
+    ],
+    "referenceAnswer": "先确认影响范围，再看调用链定位慢在哪一跳。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "调用链",
+      "慢查询"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "调用链"
+    ],
+    "requiredHelpTerms": [
+      "调用链"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-14",
+    "question": "高错误率怎么定位",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "错误率",
+      "5xx"
+    ],
+    "referenceAnswer": "按错误码分类，定位是 4xx 业务错误还是 5xx 服务异常。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "错误率",
+      "5xx"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "错误率"
+    ],
+    "requiredHelpTerms": [
+      "错误率"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-15",
+    "question": "CPU 飙高一般怎么处理",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "CPU",
+      "线程栈"
+    ],
+    "referenceAnswer": "抓线程栈找热点线程，判断是 GC、死循环还是序列化。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "CPU",
+      "线程栈"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "CPU"
+    ],
+    "requiredHelpTerms": [
+      "CPU"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-16",
+    "question": "排查问题为什么要保留现场",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "现场",
+      "线程栈"
+    ],
+    "referenceAnswer": "保留线程栈、堆内存、慢查询日志后再做恢复。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "现场",
+      "线程栈"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "现场"
+    ],
+    "requiredHelpTerms": [
+      "现场"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-17",
+    "question": "内存上涨怎么定位",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "内存",
+      "堆转储"
+    ],
+    "referenceAnswer": "导出堆转储，定位大对象或内存泄漏。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "内存",
+      "堆转储"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "内存"
+    ],
+    "requiredHelpTerms": [
+      "内存"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-18",
+    "question": "怎么确认一次故障的影响范围",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "影响范围",
+      "监控"
+    ],
+    "referenceAnswer": "看监控大盘，确认是单实例、单机房还是全量。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "影响范围",
+      "监控"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "影响范围"
+    ],
+    "requiredHelpTerms": [
+      "影响范围"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-19",
+    "question": "5xx 错误先看什么",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "5xx",
+      "异常日志"
+    ],
+    "referenceAnswer": "先看应用异常日志，确认空指针、超时还是下游不可用。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "5xx",
+      "异常日志"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "5xx"
+    ],
+    "requiredHelpTerms": [
+      "5xx"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-20",
+    "question": "数据库连接池耗尽怎么排查",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "连接池",
+      "耗尽"
+    ],
+    "referenceAnswer": "检查连接池配置和慢查询，定位连接是否泄漏。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "连接池",
+      "耗尽"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "连接池"
+    ],
+    "requiredHelpTerms": [
+      "连接池"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-21",
+    "question": "帮我写一首诗",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "诗"
+    ],
+    "referenceAnswer": "这是一首关于运维的诗……",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "诗"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "诗"
+    ],
+    "requiredHelpTerms": [
+      "诗"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-22",
+    "question": "线上服务全线崩溃了怎么办",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "止损",
+      "崩溃"
+    ],
+    "referenceAnswer": "先止损，回滚或切换流量，再定位根因并升级 OnCall。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "止损",
+      "崩溃"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "止损"
+    ],
+    "requiredHelpTerms": [
+      "止损"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-23",
+    "question": "支付接口大面积超时",
+    "expectedSources": [
+      "troubleshooting-runbook.md"
+    ],
+    "expectedTerms": [
+      "支付",
+      "超时"
+    ],
+    "referenceAnswer": "立即通知业务方，检查支付网关和订单状态，防止重复扣款。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "支付",
+      "超时"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "支付"
+    ],
+    "requiredHelpTerms": [
+      "支付"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-24",
+    "question": "P0 和 P1 告警分别代表什么",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "P0",
+      "P1"
+    ],
+    "referenceAnswer": "P0 表示核心链路完全不可用需立即 OnCall，P1 需 30 分钟内响应。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "P0",
+      "P1"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "P0"
+    ],
+    "requiredHelpTerms": [
+      "P0"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-25",
+    "question": "黄金指标是哪几个",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "黄金指标",
+      "延迟"
+    ],
+    "referenceAnswer": "请求量、错误率、延迟、饱和度。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "黄金指标",
+      "延迟"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "黄金指标"
+    ],
+    "requiredHelpTerms": [
+      "黄金指标"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-26",
+    "question": "告警为什么要有持续时间和阈值",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "告警",
+      "阈值"
+    ],
+    "referenceAnswer": "避免误报淹没真实告警。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "告警",
+      "阈值"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "告警"
+    ],
+    "requiredHelpTerms": [
+      "告警"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-27",
+    "question": "可观测性一般要接哪三样",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "日志",
+      "指标",
+      "链路追踪"
+    ],
+    "referenceAnswer": "统一接入日志、指标、链路追踪，用 traceId 串联全链路。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "日志",
+      "指标",
+      "链路追踪"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "日志"
+    ],
+    "requiredHelpTerms": [
+      "日志"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-28",
+    "question": "告警治理一般做什么",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "告警治理",
+      "误报"
+    ],
+    "referenceAnswer": "清理长期不触发或重复的告警规则。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "告警治理",
+      "误报"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "告警治理"
+    ],
+    "requiredHelpTerms": [
+      "告警治理"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-29",
+    "question": "核心链路错误率突然恶化",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "错误率",
+      "恶化"
+    ],
+    "referenceAnswer": "按 P1 处理，30 分钟内响应，先看调用链和发布记录。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "错误率",
+      "恶化"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "错误率"
+    ],
+    "requiredHelpTerms": [
+      "错误率"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-30",
+    "question": "支付成功率持续下降",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "支付",
+      "告警"
+    ],
+    "referenceAnswer": "按 P0 处理，立即 OnCall，检查支付网关。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "支付",
+      "告警"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "支付"
+    ],
+    "requiredHelpTerms": [
+      "支付"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-31",
+    "question": "磁盘使用率打满会怎样",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "磁盘",
+      "告警"
+    ],
+    "referenceAnswer": "可能触发写失败，需要告警并扩容。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "磁盘",
+      "告警"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "磁盘"
+    ],
+    "requiredHelpTerms": [
+      "磁盘"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-32",
+    "question": "告警信息里应该带什么",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "告警",
+      "runbook"
+    ],
+    "referenceAnswer": "带明确指标、阈值，并指向可执行的排查步骤。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "告警",
+      "runbook"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "告警"
+    ],
+    "requiredHelpTerms": [
+      "告警"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-33",
+    "question": "给我讲个笑话",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "笑话"
+    ],
+    "referenceAnswer": "运维去修服务器，发现是电源线没插。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "笑话"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "笑话"
+    ],
+    "requiredHelpTerms": [
+      "笑话"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-34",
+    "question": "整个监控大盘全部变红",
+    "expectedSources": [
+      "monitoring-alerting.md"
+    ],
+    "expectedTerms": [
+      "监控",
+      "全线"
+    ],
+    "referenceAnswer": "先确认监控系统本身是否正常，再按 P0 逐条止损。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "监控",
+      "全线"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "监控"
+    ],
+    "requiredHelpTerms": [
+      "监控"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-35",
+    "question": "事故响应第一原则是什么",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "止损",
+      "根因"
+    ],
+    "referenceAnswer": "先止损，再定位根因，优先恢复服务。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "止损",
+      "根因"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "止损"
+    ],
+    "requiredHelpTerms": [
+      "止损"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-36",
+    "question": "线上支付全挂了第一步做什么",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "止损",
+      "回滚"
+    ],
+    "referenceAnswer": "先止损，回滚最近一次发布或切换流量，并升级 OnCall。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "止损",
+      "回滚"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "止损"
+    ],
+    "requiredHelpTerms": [
+      "止损"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-37",
+    "question": "服务宕机怎么处理",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "宕机",
+      "重启"
+    ],
+    "referenceAnswer": "先重启恢复，再查启动日志和资源水位。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "宕机",
+      "重启"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "宕机"
+    ],
+    "requiredHelpTerms": [
+      "宕机"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-38",
+    "question": "数据不一致怎么处理",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "数据不一致",
+      "暂停写"
+    ],
+    "referenceAnswer": "暂停写操作，核对主从延迟或缓存差异，再修复数据。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "数据不一致",
+      "暂停写"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "数据不一致"
+    ],
+    "requiredHelpTerms": [
+      "数据不一致"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-39",
+    "question": "事故复盘一般什么时候完成",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "复盘",
+      "24小时"
+    ],
+    "referenceAnswer": "事故结束后 24 小时内完成复盘。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "复盘",
+      "24小时"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "复盘"
+    ],
+    "requiredHelpTerms": [
+      "复盘"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-40",
+    "question": "止损有哪些常用手段",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "回滚",
+      "降级"
+    ],
+    "referenceAnswer": "回滚、切换流量、降级、限流。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "回滚",
+      "降级"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "回滚"
+    ],
+    "requiredHelpTerms": [
+      "回滚"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-41",
+    "question": "重大事故要第一时间通知谁",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "通知",
+      "值班负责人"
+    ],
+    "referenceAnswer": "第一时间通知值班负责人并升级 OnCall。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "通知",
+      "值班负责人"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "通知"
+    ],
+    "requiredHelpTerms": [
+      "通知"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-42",
+    "question": "数据库故障怎么保证可写",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "数据库",
+      "主从切换"
+    ],
+    "referenceAnswer": "先切换只读或主从切换，避免长时间不可写。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "数据库",
+      "主从切换"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "数据库"
+    ],
+    "requiredHelpTerms": [
+      "数据库"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-43",
+    "question": "复盘改进项要满足什么",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "改进项",
+      "可执行"
+    ],
+    "referenceAnswer": "要可执行、可验收，并跟踪到闭环。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "改进项",
+      "可执行"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "改进项"
+    ],
+    "requiredHelpTerms": [
+      "改进项"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-44",
+    "question": "周末去哪玩比较好",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "周末"
+    ],
+    "referenceAnswer": "可以去郊外爬山放松一下。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "周末"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "周末"
+    ],
+    "requiredHelpTerms": [
+      "周末"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-45",
+    "question": "订单系统大量数据丢失",
+    "expectedSources": [
+      "incident-response.md"
+    ],
+    "expectedTerms": [
+      "数据丢失",
+      "订单"
+    ],
+    "referenceAnswer": "暂停写，立即评估影响，从备份恢复并通知业务方。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "数据丢失",
+      "订单"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "数据丢失"
+    ],
+    "requiredHelpTerms": [
+      "数据丢失"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-46",
+    "question": "数据库慢查询怎么治理",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "慢查询",
+      "explain"
+    ],
+    "referenceAnswer": "开启慢查询日志，用 explain 确认是否走索引。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "慢查询",
+      "explain"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "慢查询"
+    ],
+    "requiredHelpTerms": [
+      "慢查询"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-47",
+    "question": "怎么避免索引失效",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "索引",
+      "函数运算"
+    ],
+    "referenceAnswer": "避免在索引列上做函数运算或隐式类型转换。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "索引",
+      "函数运算"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "索引"
+    ],
+    "requiredHelpTerms": [
+      "索引"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-48",
+    "question": "连接池大小怎么定",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "连接池",
+      "大小"
+    ],
+    "referenceAnswer": "按并发和数据库承载能力配置，避免耗尽。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "连接池",
+      "大小"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "连接池"
+    ],
+    "requiredHelpTerms": [
+      "连接池"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-49",
+    "question": "大事务有什么风险",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "大事务",
+      "锁"
+    ],
+    "referenceAnswer": "增加行锁表锁持有时间，要拆小。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "大事务",
+      "锁"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "大事务"
+    ],
+    "requiredHelpTerms": [
+      "大事务"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-50",
+    "question": "备份恢复演练为什么重要",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "备份",
+      "恢复演练"
+    ],
+    "referenceAnswer": "验证备份可用性，避免备份了但恢复不了。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "备份",
+      "恢复演练"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "备份"
+    ],
+    "requiredHelpTerms": [
+      "备份"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-51",
+    "question": "主从延迟超过阈值怎么办",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "主从延迟",
+      "告警"
+    ],
+    "referenceAnswer": "要告警，读写分离场景要注意一致性。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "主从延迟",
+      "告警"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "主从延迟"
+    ],
+    "requiredHelpTerms": [
+      "主从延迟"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-52",
+    "question": "单表数据量过大怎么处理",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "分库分表",
+      "归档"
+    ],
+    "referenceAnswer": "考虑归档或分库分表。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "分库分表",
+      "归档"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "分库分表"
+    ],
+    "requiredHelpTerms": [
+      "分库分表"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-53",
+    "question": "死锁一般怎么定位",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "死锁",
+      "锁等待"
+    ],
+    "referenceAnswer": "通过锁等待日志定位相互等待的事务。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "死锁",
+      "锁等待"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "死锁"
+    ],
+    "requiredHelpTerms": [
+      "死锁"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-54",
+    "question": "数据库连接数打满怎么办",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "连接数",
+      "耗尽"
+    ],
+    "referenceAnswer": "先限制来源，再优化慢查询和连接池。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "连接数",
+      "耗尽"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "连接数"
+    ],
+    "requiredHelpTerms": [
+      "连接数"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-55",
+    "question": "推荐一本书给我",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "书"
+    ],
+    "referenceAnswer": "推荐《高性能 MySQL》。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "书"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "书"
+    ],
+    "requiredHelpTerms": [
+      "书"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-56",
+    "question": "主库突然不可写",
+    "expectedSources": [
+      "database-operations.md"
+    ],
+    "expectedTerms": [
+      "主库",
+      "不可写"
+    ],
+    "referenceAnswer": "立即做主从切换，恢复写入能力。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "主库",
+      "不可写"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "主库"
+    ],
+    "requiredHelpTerms": [
+      "主库"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-57",
+    "question": "网关主要职责有哪些",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "网关",
+      "鉴权"
+    ],
+    "referenceAnswer": "统一鉴权、限流、路由、协议转换。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "网关",
+      "鉴权"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "网关"
+    ],
+    "requiredHelpTerms": [
+      "网关"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-58",
+    "question": "网关频繁熔断是什么原因",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "熔断",
+      "下游"
+    ],
+    "referenceAnswer": "通常是下游服务慢，定位下游慢原因而不是一味调大阈值。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "熔断",
+      "下游"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "熔断"
+    ],
+    "requiredHelpTerms": [
+      "熔断"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-59",
+    "question": "接口为什么要做幂等",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "幂等",
+      "支付"
+    ],
+    "referenceAnswer": "防止重复提交，尤其支付、下单等写操作。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "幂等",
+      "支付"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "幂等"
+    ],
+    "requiredHelpTerms": [
+      "幂等"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-60",
+    "question": "限流常用什么算法",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "限流",
+      "令牌桶"
+    ],
+    "referenceAnswer": "令牌桶或滑动窗口。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "限流",
+      "令牌桶"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "限流"
+    ],
+    "requiredHelpTerms": [
+      "限流"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-61",
+    "question": "服务发现一般怎么剔除不健康实例",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "服务发现",
+      "健康检查"
+    ],
+    "referenceAnswer": "通过健康检查剔除不健康实例。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "服务发现",
+      "健康检查"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "服务发现"
+    ],
+    "requiredHelpTerms": [
+      "服务发现"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-62",
+    "question": "统一错误码有什么好处",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "错误码",
+      "响应结构"
+    ],
+    "referenceAnswer": "方便前端和调用方处理。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "错误码",
+      "响应结构"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "错误码"
+    ],
+    "requiredHelpTerms": [
+      "错误码"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-63",
+    "question": "网关超时怎么处理",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "网关",
+      "超时"
+    ],
+    "referenceAnswer": "检查上游延迟，调整超时与重试策略。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "网关",
+      "超时"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "网关"
+    ],
+    "requiredHelpTerms": [
+      "网关"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-64",
+    "question": "熔断和降级有什么区别",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "熔断",
+      "降级"
+    ],
+    "referenceAnswer": "熔断是快速失败，降级是返回兜底。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "熔断",
+      "降级"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "熔断"
+    ],
+    "requiredHelpTerms": [
+      "熔断"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-65",
+    "question": "网关 502 一般是哪里问题",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "502",
+      "上游"
+    ],
+    "referenceAnswer": "网关到上游连接失败或上游挂了，先查上游健康。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "502",
+      "上游"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "502"
+    ],
+    "requiredHelpTerms": [
+      "502"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-66",
+    "question": "帮我查一下汇率",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "汇率"
+    ],
+    "referenceAnswer": "这是通用知识，请用搜索引擎查询。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "汇率"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "汇率"
+    ],
+    "requiredHelpTerms": [
+      "汇率"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-67",
+    "question": "网关整层不可用",
+    "expectedSources": [
+      "api-gateway-service.md"
+    ],
+    "expectedTerms": [
+      "网关",
+      "不可用"
+    ],
+    "referenceAnswer": "检查网关自身和上游，按 P0 止损。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "网关",
+      "不可用"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "网关"
+    ],
+    "requiredHelpTerms": [
+      "网关"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-68",
+    "question": "大促前怎么做容量评估",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "压测",
+      "容量"
+    ],
+    "referenceAnswer": "先压测确认单实例 QPS 上限，再按峰值规划。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "压测",
+      "容量"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "压测"
+    ],
+    "requiredHelpTerms": [
+      "压测"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-69",
+    "question": "水平扩容和垂直扩容的区别",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "水平扩容",
+      "垂直扩容"
+    ],
+    "referenceAnswer": "水平加实例，垂直加单机规格。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "水平扩容",
+      "垂直扩容"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "水平扩容"
+    ],
+    "requiredHelpTerms": [
+      "水平扩容"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-70",
+    "question": "缓存雪崩怎么避免",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "缓存雪崩",
+      "随机抖动"
+    ],
+    "referenceAnswer": "过期时间加随机抖动，避免同时失效。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "缓存雪崩",
+      "随机抖动"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "缓存雪崩"
+    ],
+    "requiredHelpTerms": [
+      "缓存雪崩"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-71",
+    "question": "缓存穿透怎么兜底",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "缓存穿透",
+      "布隆过滤器"
+    ],
+    "referenceAnswer": "用布隆过滤器或空值缓存。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "缓存穿透",
+      "布隆过滤器"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "缓存穿透"
+    ],
+    "requiredHelpTerms": [
+      "缓存穿透"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-72",
+    "question": "热点 key 怎么保护",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "缓存击穿",
+      "互斥锁"
+    ],
+    "referenceAnswer": "用互斥锁或逻辑过期。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "缓存击穿",
+      "互斥锁"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "缓存击穿"
+    ],
+    "requiredHelpTerms": [
+      "缓存击穿"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-73",
+    "question": "弹性伸缩一般按什么指标",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "弹性伸缩",
+      "QPS"
+    ],
+    "referenceAnswer": "按 CPU 或 QPS 指标自动扩缩容。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "弹性伸缩",
+      "QPS"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "弹性伸缩"
+    ],
+    "requiredHelpTerms": [
+      "弹性伸缩"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-74",
+    "question": "容量规划要预留多少冗余",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "冗余",
+      "30%"
+    ],
+    "referenceAnswer": "预留 30% 以上冗余。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "冗余",
+      "30%"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "冗余"
+    ],
+    "requiredHelpTerms": [
+      "冗余"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-75",
+    "question": "削峰一般用什么",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "削峰",
+      "消息队列"
+    ],
+    "referenceAnswer": "用消息队列削峰填谷。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "削峰",
+      "消息队列"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "削峰"
+    ],
+    "requiredHelpTerms": [
+      "削峰"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-76",
+    "question": "大促瞬间流量洪峰打爆服务",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "洪峰",
+      "限流"
+    ],
+    "referenceAnswer": "先限流保护核心链路，再紧急扩容。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "洪峰",
+      "限流"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "洪峰"
+    ],
+    "requiredHelpTerms": [
+      "洪峰"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-77",
+    "question": "今晚吃什么好",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "晚饭"
+    ],
+    "referenceAnswer": "随便吃点清淡的。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "晚饭"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "晚饭"
+    ],
+    "requiredHelpTerms": [
+      "晚饭"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-78",
+    "question": "缓存集群整体雪崩",
+    "expectedSources": [
+      "capacity-scaling.md"
+    ],
+    "expectedTerms": [
+      "雪崩",
+      "缓存"
+    ],
+    "referenceAnswer": "先启用本地兜底和限流，再重建缓存。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "雪崩",
+      "缓存"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "雪崩"
+    ],
+    "requiredHelpTerms": [
+      "雪崩"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-79",
+    "question": "用户手机号要怎么脱敏",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "脱敏",
+      "加密"
+    ],
+    "referenceAnswer": "存储加密、展示脱敏、日志脱敏。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "脱敏",
+      "加密"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "脱敏"
+    ],
+    "requiredHelpTerms": [
+      "脱敏"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-80",
+    "question": "密码要怎么存储",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "密码",
+      "加盐哈希"
+    ],
+    "referenceAnswer": "使用加盐哈希，不存明文。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "密码",
+      "加盐哈希"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "密码"
+    ],
+    "requiredHelpTerms": [
+      "密码"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-81",
+    "question": "SQL 注入怎么防",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "SQL注入",
+      "参数校验"
+    ],
+    "referenceAnswer": "外部输入做参数校验，使用参数化查询。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "SQL注入",
+      "参数校验"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "SQL注入"
+    ],
+    "requiredHelpTerms": [
+      "SQL注入"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-82",
+    "question": "最小权限原则是什么",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "最小权限",
+      "账号"
+    ],
+    "referenceAnswer": "接口按角色做最小权限控制。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "最小权限",
+      "账号"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "最小权限"
+    ],
+    "requiredHelpTerms": [
+      "最小权限"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-83",
+    "question": "支付平台要符合什么合规",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "支付合规",
+      "等保"
+    ],
+    "referenceAnswer": "符合支付合规和等保要求。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "支付合规",
+      "等保"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "支付合规"
+    ],
+    "requiredHelpTerms": [
+      "支付合规"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-84",
+    "question": "日志里敏感信息要注意什么",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "日志",
+      "脱敏"
+    ],
+    "referenceAnswer": "敏感信息要脱敏后再落日志。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "日志",
+      "脱敏"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "日志"
+    ],
+    "requiredHelpTerms": [
+      "日志"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-85",
+    "question": "数据泄露应急预案要包含什么",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "应急预案",
+      "上报"
+    ],
+    "referenceAnswer": "明确上报和通知流程。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "应急预案",
+      "上报"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "应急预案"
+    ],
+    "requiredHelpTerms": [
+      "应急预案"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-86",
+    "question": "密钥要怎么管理",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "密钥",
+      "密钥管理"
+    ],
+    "referenceAnswer": "走密钥管理服务，不硬编码。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "密钥",
+      "密钥管理"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "密钥"
+    ],
+    "requiredHelpTerms": [
+      "密钥"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-87",
+    "question": "用户数据被大量泄露",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "数据泄露",
+      "上报"
+    ],
+    "referenceAnswer": "立即上报，评估影响，通知用户，保留证据。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "数据泄露",
+      "上报"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "数据泄露"
+    ],
+    "requiredHelpTerms": [
+      "数据泄露"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-88",
+    "question": "给我讲个冷笑话",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "冷笑话"
+    ],
+    "referenceAnswer": "一个安全工程师走进酒吧……",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "冷笑话"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "冷笑话"
+    ],
+    "requiredHelpTerms": [
+      "冷笑话"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-89",
+    "question": "支付通道出现疑似攻击",
+    "expectedSources": [
+      "security-compliance.md"
+    ],
+    "expectedTerms": [
+      "攻击",
+      "支付"
+    ],
+    "referenceAnswer": "先隔离可疑来源，按安全应急流程上报。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "攻击",
+      "支付"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "攻击"
+    ],
+    "requiredHelpTerms": [
+      "攻击"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-90",
+    "question": "Connection refused 怎么处理",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "Connection refused",
+      "端口"
+    ],
+    "referenceAnswer": "确认服务是否启动、端口是否正确。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "Connection refused",
+      "端口"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "Connection refused"
+    ],
+    "requiredHelpTerms": [
+      "Connection refused"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-91",
+    "question": "Too many connections 怎么办",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "Too many connections",
+      "连接池"
+    ],
+    "referenceAnswer": "调大连接池或优化慢查询，先确认是否泄漏。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "Too many connections",
+      "连接池"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "Too many connections"
+    ],
+    "requiredHelpTerms": [
+      "Too many connections"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-92",
+    "question": "OutOfMemoryError 怎么定位",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "OOM",
+      "dump"
+    ],
+    "referenceAnswer": "先 dump 分析是否内存泄漏。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "OOM",
+      "dump"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "OOM"
+    ],
+    "requiredHelpTerms": [
+      "OOM"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-93",
+    "question": "Deadlock found 怎么处理",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "死锁",
+      "事务"
+    ],
+    "referenceAnswer": "优化事务顺序，缩短锁持有时间。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "死锁",
+      "事务"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "死锁"
+    ],
+    "requiredHelpTerms": [
+      "死锁"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-94",
+    "question": "Read timed out 怎么排查",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "Read timed out",
+      "下游"
+    ],
+    "referenceAnswer": "下游响应过慢，调大超时或优化下游。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "Read timed out",
+      "下游"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "Read timed out"
+    ],
+    "requiredHelpTerms": [
+      "Read timed out"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-95",
+    "question": "Gateway Timeout 一般是哪层",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "Gateway Timeout",
+      "上游"
+    ],
+    "referenceAnswer": "网关等待上游超时，检查上游延迟。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "MEDIUM",
+    "groundedAnswerTerms": [
+      "Gateway Timeout",
+      "上游"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "Gateway Timeout"
+    ],
+    "requiredHelpTerms": [
+      "Gateway Timeout"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-96",
+    "question": "数据库连接池耗尽报错",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "连接池",
+      "耗尽"
+    ],
+    "referenceAnswer": "立即定位慢查询和连接泄漏，必要时重启恢复。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "连接池",
+      "耗尽"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "连接池"
+    ],
+    "requiredHelpTerms": [
+      "连接池"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-97",
+    "question": "线上堆内存 OOM 崩溃",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "OOM",
+      "崩溃"
+    ],
+    "referenceAnswer": "先重启恢复，再 dump 分析内存泄漏。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "OOM",
+      "崩溃"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "OOM"
+    ],
+    "requiredHelpTerms": [
+      "OOM"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-98",
+    "question": "大量请求 504 超时",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "504",
+      "超时"
+    ],
+    "referenceAnswer": "检查上游和网关，按 P0 止损。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "504",
+      "超时"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "504"
+    ],
+    "requiredHelpTerms": [
+      "504"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-99",
+    "question": "今天适合跑步吗",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "跑步"
+    ],
+    "referenceAnswer": "适合，注意补水。",
+    "expectedIntent": "CHAT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": [
+      "跑步"
+    ],
+    "minGroundedAnswerTerms": 1,
+    "requiredAnswerTerms": [
+      "跑步"
+    ],
+    "requiredHelpTerms": [
+      "跑步"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  },
+  {
+    "id": "case-100",
+    "question": "核心服务全部报错",
+    "expectedSources": [
+      "common-errors-faq.md"
+    ],
+    "expectedTerms": [
+      "全部报错",
+      "核心"
+    ],
+    "referenceAnswer": "先看是否发布或配置引起，回滚止损。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": [
+      "全部报错",
+      "核心"
+    ],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": [
+      "全部报错"
+    ],
+    "requiredHelpTerms": [
+      "全部报错"
+    ],
+    "forbiddenAnswerTerms": [
+      "告警等级",
+      "评估分数",
+      "报告",
+      "风险等级"
+    ]
+  }
+]

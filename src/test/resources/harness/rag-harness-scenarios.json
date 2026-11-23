@@ -1,0 +1,30 @@
+[
+  {
+    "id": "harness-incident-high-payment-outage",
+    "question": "线上支付系统宕机了，订单大量失败。",
+    "expectedSources": ["incident-response.md"],
+    "expectedTerms": ["止损", "OnCall"],
+    "referenceAnswer": "先止损，回滚最近一次发布或切换流量，并立即升级 OnCall。",
+    "expectedIntent": "INCIDENT",
+    "expectedSeverityLevel": "HIGH",
+    "groundedAnswerTerms": ["止损", "OnCall", "回滚"],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": ["止损", "回滚"],
+    "requiredHelpTerms": ["OnCall"],
+    "forbiddenAnswerTerms": ["告警等级", "评估分数", "Excel", "MCP", "报告", "风险等级"]
+  },
+  {
+    "id": "harness-consult-latency-troubleshoot",
+    "question": "服务延迟突然升高，怎么排查？",
+    "expectedSources": ["monitoring-alerting.md"],
+    "expectedTerms": ["调用链", "慢查询"],
+    "referenceAnswer": "先确认影响范围，再看监控和调用链定位慢在哪一跳，按故障排查手册处理。",
+    "expectedIntent": "CONSULT",
+    "expectedSeverityLevel": "LOW",
+    "groundedAnswerTerms": ["调用链", "监控", "慢查询"],
+    "minGroundedAnswerTerms": 2,
+    "requiredAnswerTerms": ["影响范围", "排查"],
+    "requiredHelpTerms": ["调用链"],
+    "forbiddenAnswerTerms": ["告警等级", "评估分数", "报告", "风险等级"]
+  }
+]

@@ -1,0 +1,31 @@
+package com.opspilot.agent.service.mcp;
+
+import com.opspilot.agent.domain.AlertRecord;
+import com.opspilot.agent.domain.IncidentReport;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class McpAlertNotifier implements AlertNotifier {
+
+    private final McpToolClient mcpToolClient;
+
+    public McpAlertNotifier(McpToolClient mcpToolClient) {
+        this.mcpToolClient = mcpToolClient;
+    }
+
+    @Override
+    public void notify(AlertRecord alertRecord, IncidentReport report) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("recipient", alertRecord.getRecipient());
+        payload.put("reportId", report.getId());
+        payload.put("userId", report.getUser().getId());
+        payload.put("username", report.getUser().getUsername());
+        payload.put("displayName", report.getUser().getDisplayName());
+        payload.put("severity", report.getSeverity().name());
+        payload.put("category", report.getCategory().name());
+        payload.put("severityScore", report.getSeverityScore());
+        payload.put("summary", report.getSummary());
+        payload.put("content", report.getContent());
+        mcpToolClient.call(McpToolNames.SEND_INCIDENT_ALERT, payload);
+    }
+}
