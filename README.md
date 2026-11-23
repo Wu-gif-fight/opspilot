@@ -13,6 +13,97 @@ OpsPilot 是一个面向电商平台的运维多智能体平台，基于 Spring 
 
 大模型 LoRA 微调、合并、GGUF 转换和 Ollama 接入流程见：[docs/qwen25-7b-lora-finetune-guide.md](docs/qwen25-7b-lora-finetune-guide.md)。
 
+## 系统架构
+
+```mermaid
+flowchart TB
+    UI["Web 前端<br/>SSE 流式对话 · 账号登录"]
+
+    subgraph Backend["后端 Spring Boot + Spring AI"]
+        API["REST / SSE / MCP 接口"]
+        LOOP["多 Agent Loop（最多 8 步）"]
+    end
+
+    subgraph Agents["多 Agent 协作"]
+        A1["MemoryAgent"]
+        A2["SupervisorAgent"]
+        A3["KnowledgeAgent"]
+        A4["IncidentGuardianAgent"]
+        A5["General / OpsSupportAgent"]
+    end
+
+    subgraph Models["模型层"]
+        LLM["聊天模型<br/>DeepSeek / Ollama"]
+        EMB["向量化<br/>硅基流动 bge-m3"]
+    end
+
+    subgraph Store["数据层"]
+        DB[("MySQL / H2")]
+        RDS[("Redis")]
+        CH[("Chroma")]
+    end
+
+    subgraph Toolchain["告警工具链"]
+        MQ["RabbitMQ"]
+        XLS["写 Excel 报告"]
+        MAIL["邮件告警 Mailpit"]
+    end
+
+    UI --> API
+    API --> LOOP
+    LOOP --> A1 --> A2 --> A3 --> A4 --> A5
+    API --> LLM
+    API --> EMB
+    API --> DB
+    API --> RDS
+    API --> CH
+    A4 -->|"HIGH 告警"| MQ --> XLS --> MAIL
+```
+
+## 项目截图
+
+### 登录与对话
+
+**登录页** — Basic Auth 双角色登录（`engineer` 普通用户 / `admin` 管理员）
+
+![登录页](docs/images/login.png)
+
+**智能对话（SSE 流式输出）** — 运维咨询走动态路由 RAG，回复打字机式实时输出
+
+![流式对话](docs/images/chat-sse.png)
+
+### 故障告警链路
+
+**故障告警触发** — “线上支付全挂了” 触发 HIGH 高等级告警，进入后台工具链
+
+![故障告警](docs/images/alert-incident.png)
+
+**管理后台 · 事故报告列表** — LOW / MEDIUM / HIGH 分级标签 + 指标卡
+
+![报告列表](docs/images/admin-report.png)
+
+**运行轨迹 · 多 Agent 分步流转** — Memory → Supervisor → Knowledge → Incident Guardian → Ops Support 每一步的决策过程
+
+![运行轨迹](docs/images/agent-trace.png)
+
+**Mailpit 告警邮件** — 高级别告警自动通过 SMTP 发出
+
+![告警邮件](docs/images/mailpit-alert.png)
+
+**RabbitMQ 工具队列** — 告警任务异步投递与消费
+
+![RabbitMQ 队列](docs/images/rabbitmq-queue.png)
+
+### RAG 与记忆
+
+**知识库上传** — 支持 PDF / Markdown / txt，自动切块入库
+
+![知识库](docs/images/knowledge-base.png)
+
+**用户画像记忆** — 从对话抽取技术栈、沟通偏好等长期记忆
+
+![用户画像](docs/images/user-memory.png)
+
 ## 目录
 
 ```text
